@@ -1,4 +1,8 @@
+# Ambienti virtuali (Librerie locali)
 venv/
 .venv/
+# File temporanei di Python e Jupyter
 __pycache__/
 .ipynb_checkpoints/
+# Risultati delle analisi (Grafici, CSV generati, ecc.)
+output/
