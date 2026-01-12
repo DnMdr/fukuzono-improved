@@ -59,7 +59,8 @@ matplotlib==3.10.8         # Plotting
 │   └── report.py                     # Text report generation
 ├── fukuzono.ipynb                    # Main Jupyter notebook
 ├── requirements.txt
-└── README.md
+├── README.md
+└── LICENSE
 ```
 
 ## References
@@ -81,4 +82,3 @@ Under the conditions that you:
 - Include a copy of the license and copyright notice
 - Disclose the source code of any modifications
 - Release derivatives under the same license
-```
