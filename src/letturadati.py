@@ -16,8 +16,7 @@ def processa_dataset(params:parametri):
         DataFrame processato con i dati pronti per l'analisi.
     """
 
-        # L'encoding non è utf-8 ma latin1 nel caso del csv fornito dallo studio geologico
-    df = pd.read_csv(params.file_csv, encoding='latin1')
+    # L'encoding non è utf-8 ma latin1 nel caso del csv fornito dallo studio geologico
     df = pd.read_csv(params.file_csv, encoding=params.encoding_csv)
     
     # Conversione Data, necessaria per convertire il valore della cella Data del csv da stringa a timestamp
