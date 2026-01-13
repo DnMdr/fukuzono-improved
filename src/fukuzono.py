@@ -29,19 +29,13 @@ def applica_fukuzono_qi(df, params:parametri):
    
     # fillna(0) serve perché il filtro non accetta NaN
     v_clean = df[params.col_velocita].fillna(0)
+
     # Creazione nome per titolo grafico
-    smoothing_name = "Filtro non assegnato"
+    smoothing_name = "Filtro SG" if params.smoothing_technique == 1 else "Media Pesata"
     if params.smoothing_technique == 1:
-        # 1. Smoothing con Savitzky-Golay (funzione della libreria scipy.signal)
         df['v_smooth'] = savgol_filter(v_clean, window_length=params.finestra_savgol, polyorder=params.polinomio_savgol)
-        smoothing_name = "Filtro SG"
-    elif params.smoothing_technique  == 2:
-        df['v_smooth'] = v_clean.rolling(window=params.finestra_media_mobile).mean()
-        smoothing_name = "Media Pesata"
-    """
     else:
-        print("Scegli un filtro tra Savitsky-Golay o Media Pesata")
-    """
+        df['v_smooth'] = v_clean.rolling(window=params.finestra_media_mobile).mean()
 
     # Rimuoviamo valori negativi o nulli (fisicamente impossibili o fermi) per 1/V la soglia viene posta a 0.001 mm
     # Usiamo una copia per non corrompere l'indice
@@ -58,10 +52,10 @@ def applica_fukuzono_qi(df, params:parametri):
     # 4. Identificazione Fase di Accelerazione per il Fitting
     # La variabile SOGLIA_FIT_ALPHA è dichiarata dall'utente
     mask_fit = (df_calc['alpha'] >= params.soglia_fit_alpha)
-    df_fit = df_calc[mask_fit]
+    df_fit = df_calc[mask_fit].copy()
     
     # Dichiarazione variabili per la predizione
-    prediction_info = None
+    previsione = None
     model = None
     
     # Eseguiamo la regressione solo se abbiamo abbastanza punti in zona critica (>10 punti)
