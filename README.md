@@ -15,34 +15,6 @@ This project implements an advanced slope failure prediction algorithm based on:
 - Python 3.8+
 - Dependencies listed in `requirements.txt`
 
-### Key Dependencies
-
-```python
-pandas==2.3.3              # Data manipulation
-numpy==2.4.0               # Numerical computations
-scipy==1.16.3              # Signal processing (Savitzky-Golay filter)
-scikit-learn==1.8.0        # Linear regression
-matplotlib==3.10.8         # Plotting
-```
-
-## Installation
-
-1. **Clone or download the repository**
-   ```bash
-   cd fukuzono_improved
-   ```
-
-2. **Create and activate a virtual environment** (recommended)
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
 ## References
 
 - Fukuzono, T. (1985). "A new method for predicting the failure time of a slope." *8th International Conference on Soil Mechanics and Foundation Engineering*.
