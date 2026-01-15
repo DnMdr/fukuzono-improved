@@ -20,6 +20,7 @@ defusedxml==0.7.1
 docopt==0.6.2
 executing==2.2.1
 fastjsonschema==2.21.2
+filterpy==1.4.5
 fonttools==4.61.1
 fqdn==1.5.1
 h11==0.16.0

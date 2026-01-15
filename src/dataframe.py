@@ -34,6 +34,13 @@ def dataframe_init(parametri:Parametri) -> pd.DataFrame:
     df = df.rename(columns=mappa_nomi)
 
     df['data'] = pd.to_datetime(df['data'])
+    
+    last_valid_idx = df['v_clean'].last_valid_index()
+    
+    if last_valid_idx is not None:
+        # Tagliamo il dataframe: teniamo solo dalla riga 0 fino all'ultimo dato reale
+        df = df.loc[:last_valid_idx].copy()
+        print(f"DataFrame troncato all'ultimo dato utile: {df['data'].iloc[-1]}")
         
     # Filtro temporale in base alla data di inizio analisi
     maschera = df['data'] >= parametri.inizio_analisi

@@ -139,6 +139,5 @@ def plot_fukuzono(df_res: pd.DataFrame, df_main: pd.DataFrame, df_fit: pd.DataFr
     plt.setp(ax2.get_xticklabels(), visible=False)
     
     ax3.xaxis.set_major_formatter(mdates.DateFormatter('%d/%m %H'))
-    fig.autofmt_xdate() # Ruota le date per non sovrapporle
     
     return fig
