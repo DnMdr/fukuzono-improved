@@ -18,7 +18,6 @@ This project implements an advanced slope failure prediction algorithm based on:
 ## References
 
 - Fukuzono, T. (1985). "A new method for predicting the failure time of a slope." *8th International Conference on Soil Mechanics and Foundation Engineering*.
-- Voight, B. (1988). "A method for prediction of volcanic eruptions." *Nature*, 332(6160), 125-130.
 - Qi, S., Cao, X., & Peng, M. (2023). "An improvement velocity inverse method for predicting the slope imminent failure time." *Landslides*, 20, 1–12.
 - Zhou, W., Liu, Q., & Xu, Q. (2020). "A modified inverse-velocity method for predicting the failure time of landslides." *Bulletin of Engineering Geology and the Environment*, 79(8), 4327-4341.
 
