@@ -43,26 +43,6 @@ matplotlib==3.10.8         # Plotting
    pip install -r requirements.txt
    ```
 
-## Project Structure
-
-```
-.
-├── data/
-│   └── dati_lanzada.csv              # Input dataset
-├── output/
-│   └── grafico_fukuzono.png          # Generated plot
-├── src/
-│   ├── config.py                     # Configuration dataclasses
-│   ├── fukuzono.py                   # Core INV analysis
-│   ├── letturadati.py                # Data loading & preprocessing
-│   ├── plot.py                       # Visualization
-│   └── report.py                     # Text report generation
-├── fukuzono.ipynb                    # Main Jupyter notebook
-├── requirements.txt
-├── README.md
-└── LICENSE
-```
-
 ## References
 
 - Fukuzono, T. (1985). "A new method for predicting the failure time of a slope." *8th International Conference on Soil Mechanics and Foundation Engineering*.

@@ -2,16 +2,17 @@ import numpy as np
 from scipy.signal import savgol_filter
 from sklearn.linear_model import LinearRegression
 from datetime import timedelta
-from src.config import parametri
+from src.config import Parametri
+from src.config import FilteringParams
 
-def applica_fukuzono_qi(df, params:parametri):
+def applica_fukuzono_qi(df, params:Parametri, filtering_params:FilteringParams):
     """
         Applica il metodo di Fukuzono con correzione statistica di Qi et al. ed angolo tangente.
 
         Parameters
         ----------
         df : pd.DataFrame
-            DataFrame con i dati di velocità e tempo.
+            DataFrame con i dati di data, velocità, temperatura, pioggia e hours_elapsed.
         params : parametri
             Parametri di configurazione per l'analisi.
 
@@ -26,17 +27,13 @@ def applica_fukuzono_qi(df, params:parametri):
         smoothing_name : str
             Nome del filtro applicato.
     """
-   
-    # fillna(0) serve perché il filtro non accetta NaN
-    v_clean = df[params.col_velocita].fillna(0)
 
-    # Creazione nome per titolo grafico
-    smoothing_name = "Filtro SG" if params.smoothing_technique == 1 else "Media Pesata"
-    if params.smoothing_technique == 1:
-        df['v_smooth'] = savgol_filter(v_clean, window_length=params.finestra_savgol, polyorder=params.polinomio_savgol)
+
+    smoothing_name = "Filtro SG" if filtering_params.smoothing_technique == 1 else "Media Pesata"
+    if filtering_params.smoothing_technique == 1:
+        df['v_smooth'] = savgol_filter(v_clean, window_length=filtering_params.finestra_savgol, polyorder=filtering_params.polinomio_savgol)
     else:
-        df['v_smooth'] = v_clean.rolling(window=params.finestra_media_mobile).mean()
-
+        df['v_smooth'] = v_clean.rolling(window=filtering_params.finestra_media_mobile).mean()
     # Rimuoviamo valori negativi o nulli (fisicamente impossibili o fermi) per 1/V la soglia viene posta a 0.001 mm
     # Usiamo una copia per non corrompere l'indice
     df_calc = df[df['v_smooth'] > 0.001].copy()
